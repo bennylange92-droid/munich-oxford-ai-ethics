@@ -342,7 +342,7 @@ footer {
 }
 
 .partner img {
-  max-height: 56px;
+  max-height: 68px;
   max-width: 100%;
   width: auto;
   opacity: 0.92;
@@ -355,12 +355,17 @@ footer {
 }
 
 .partner-name {
-  font-family: 'Source Serif 4', serif;
-  font-size: 0.82rem;
-  letter-spacing: 0.01em;
-  color: var(--ink-soft);
-  line-height: 1.3;
-  max-width: 18ch;
+  /* Hidden visually — institution names are embedded in the logos themselves.
+     Kept in the DOM for screen readers. */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .acknowledgement {
@@ -543,22 +548,22 @@ footer   { animation-delay: 0.6s; }
 
   <footer>
     <div class="section-label">Hosted &amp; supported by</div>
-    <!-- Partner logos: drop SVG/PNG files into ./ with the names below, or update the src attributes. -->
+    <!-- Partner logos: drop SVG/PNG files into ./assets/ with the names below, or update the src attributes. -->
     <div class="partners">
       <div class="partner">
-        <img src="mcml-logo.jpg" alt="Munich Center for Machine Learning" onerror="this.style.display='none'">
+        <img src="assets/mcml-logo.jpg" alt="Munich Center for Machine Learning" onerror="this.style.display='none'">
         <span class="partner-name">Munich Center for Machine Learning</span>
       </div>
       <div class="partner">
-        <img src="lmu-logo.svg" alt="LMU Munich" onerror="this.style.display='none'">
+        <img src="assets/lmu-logo.png" alt="LMU Munich" onerror="this.style.display='none'">
         <span class="partner-name">Ludwig-Maximilians-Universität München</span>
       </div>
       <div class="partner">
-        <img src="oxford-logo.png" alt="University of Oxford" onerror="this.style.display='none'">
+        <img src="assets/oxford-logo.png" alt="University of Oxford" onerror="this.style.display='none'">
         <span class="partner-name">University of Oxford</span>
       </div>
       <div class="partner">
-        <img src="uehiro-logo.png" alt="Uehiro Oxford Institute" onerror="this.style.display='none'">
+        <img src="assets/uehiro-logo.png" alt="Uehiro Oxford Institute" onerror="this.style.display='none'">
         <span class="partner-name">Uehiro Oxford Institute</span>
       </div>
     </div>
