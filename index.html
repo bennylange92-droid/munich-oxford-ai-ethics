@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Normative Ethics and Artificial Intelligence — Oxford–LMU Workshop · Munich, 16 July 2026</title>
+<meta name="description" content="A one-day workshop bringing together philosophers from LMU Munich and the University of Oxford to examine the normative foundations of AI ethics. Munich, 16 July 2026.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Normative Ethics and Artificial Intelligence — Oxford–LMU Workshop 2026">
+<meta property="og:description" content="One-day Munich–Oxford workshop on the normative foundations of AI ethics. LMU Munich, 16 July 2026.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..600;1,8..60,300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper:       #ffffff;
+  --paper-deep:  #f5f5f3;
+  --ink:         #111114;
+  --ink-soft:    #4a4d56;
+  --ink-faint:   #8a8d95;
+  --rule:        #d8d6d0;
+  --accent:      #2a3a5c;   /* Oxford ink */
+  --accent-warm: #8a3a1f;   /* rust */
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-variation-settings: "opsz" 14;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern", "liga", "calt";
+}
+
+/* Clean white background — no overlay */
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+}
+
+@media (min-width: 800px) {
+  .container { padding: 3rem 4rem 5rem; }
+}
+
+/* ---------- Topbar ---------- */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1.25rem;
+  margin-bottom: 5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.topbar .edition {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.topbar .edition .roman {
+  font-family: 'Fraunces', serif;
+  font-variation-settings: "opsz" 36, "SOFT" 50;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.1rem;
+  letter-spacing: 0;
+  color: var(--accent);
+  margin-right: 0.6rem;
+  vertical-align: -1px;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  margin-bottom: 6rem;
+}
+
+.hero-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-variation-settings: "opsz" 144, "SOFT" 20;
+  font-weight: 380;
+  font-size: clamp(2.6rem, 8vw, 6.8rem);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  max-width: 16ch;
+  margin-bottom: 3.5rem;
+}
+
+.hero-title .conj {
+  font-family: 'Fraunces', serif;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  font-style: italic;
+  font-weight: 320;
+  color: var(--accent);
+  padding: 0 0.05em;
+}
+
+.hero-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+
+.hero-meta dt {
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink-faint);
+  margin-bottom: 0.5rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+}
+
+.hero-meta dd {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+/* ---------- Sections ---------- */
+section {
+  margin-bottom: 5.5rem;
+  scroll-margin-top: 2rem;
+}
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 1.75rem;
+  height: 1px;
+  background: var(--ink);
+}
+
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-variation-settings: "opsz" 60, "SOFT" 30;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  line-height: 1.15;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.015em;
+  max-width: 32ch;
+  color: var(--ink);
+}
+
+.section-title em {
+  font-style: italic;
+  font-variation-settings: "opsz" 60, "SOFT" 100;
+  color: var(--accent);
+}
+
+/* ---------- About ---------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  font-size: 1.08rem;
+  max-width: 65ch;
+}
+
+@media (min-width: 820px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: none;
+  }
+}
+
+.about-grid p { margin-bottom: 1rem; }
+.about-grid p:last-child { margin-bottom: 0; }
+.about-grid em { font-style: italic; }
+
+/* ---------- Speakers ---------- */
+.speakers-list {
+  list-style: none;
+  border-top: 1px solid var(--rule);
+}
+
+.speakers-list li {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: 1.5rem;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: baseline;
+  transition: background 0.3s ease;
+}
+
+.speakers-list li:hover {
+  background: linear-gradient(to right, var(--paper-deep), transparent 80%);
+}
+
+.speaker-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+  padding-top: 0.4rem;
+}
+
+.speaker-name {
+  font-family: 'Fraunces', serif;
+  font-variation-settings: "opsz" 36, "SOFT" 30;
+  font-weight: 420;
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+  letter-spacing: -0.012em;
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--ink);
+}
+
+.speaker-aff {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  font-family: 'Source Serif 4', serif;
+}
+
+/* ---------- Two-column row ---------- */
+.row-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 800px) {
+  .row-2 { grid-template-columns: 1fr 1fr; gap: 4rem; }
+}
+
+.organizer { margin-bottom: 1.2rem; }
+.organizer:last-child { margin-bottom: 0; }
+.organizer-name {
+  font-family: 'Fraunces', serif;
+  font-variation-settings: "opsz" 24, "SOFT" 30;
+  font-size: 1.2rem;
+  font-weight: 460;
+  letter-spacing: -0.005em;
+}
+.organizer-aff {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.register-text {
+  margin-bottom: 1.4rem;
+  max-width: 38ch;
+  font-size: 1rem;
+}
+
+.register-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Fraunces', serif;
+  font-variation-settings: "opsz" 24, "SOFT" 30;
+  font-size: 1.1rem;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 0.25rem;
+  transition: color 0.25s ease, border-color 0.25s ease, letter-spacing 0.25s ease;
+}
+
+.register-cta:hover,
+.register-cta:focus-visible {
+  color: var(--accent-warm);
+  border-color: var(--accent-warm);
+  letter-spacing: 0.005em;
+  outline: none;
+}
+
+.register-cta::after {
+  content: '→';
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  transition: transform 0.25s ease;
+}
+
+.register-cta:hover::after { transform: translateX(5px); }
+
+/* ---------- Footer ---------- */
+footer {
+  margin-top: 7rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--rule);
+}
+
+.partners {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem 2rem;
+  align-items: end;
+  margin: 2.5rem 0 3rem;
+  padding: 1rem 0;
+}
+
+@media (min-width: 720px) {
+  .partners { grid-template-columns: repeat(4, 1fr); }
+}
+
+.partner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.7rem;
+}
+
+.partner img {
+  max-height: 56px;
+  max-width: 100%;
+  width: auto;
+  opacity: 0.92;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.partner:hover img {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.partner-name {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+  color: var(--ink-soft);
+  line-height: 1.3;
+  max-width: 18ch;
+}
+
+.acknowledgement {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  max-width: 78ch;
+  margin-top: 1rem;
+  line-height: 1.65;
+}
+
+.colophon {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.colophon a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.colophon a:hover { color: var(--ink); border-color: var(--ink); }
+
+/* ---------- Animations ---------- */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.topbar, .hero, section, footer {
+  animation: rise 0.7s cubic-bezier(0.2, 0.6, 0.2, 1) both;
+}
+
+.topbar { animation-delay: 0.05s; }
+.hero    { animation-delay: 0.15s; }
+section:nth-of-type(2) { animation-delay: 0.3s; }
+section:nth-of-type(3) { animation-delay: 0.4s; }
+section:nth-of-type(4) { animation-delay: 0.5s; }
+footer   { animation-delay: 0.6s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- Selection ---------- */
+::selection { background: var(--accent); color: var(--paper); }
+
+/* ---------- Print ---------- */
+@media print {
+  body { background: white; color: black; }
+  body::before { display: none; }
+  .topbar, footer .colophon, .register-cta::after { display: none; }
+  section, .hero { animation: none; page-break-inside: avoid; }
+  .hero-title { font-size: 2.6rem; }
+  a { color: black; text-decoration: none; }
+  .partner img { opacity: 1; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="topbar">
+    <div class="edition"><span class="roman">III</span>Munich ↔ Oxford</div>
+    <div>16.07.2026 · München</div>
+  </header>
+
+  <div class="hero">
+    <h1 class="hero-title">
+      Normative Ethics <span class="conj">and</span> Artificial Intelligence
+    </h1>
+    <dl class="hero-meta">
+      <div>
+        <dt>Date</dt>
+        <dd>Thursday<br>16 July 2026</dd>
+      </div>
+      <div>
+        <dt>Time</dt>
+        <dd>09:30 – 17:00</dd>
+      </div>
+      <div>
+        <dt>Venue</dt>
+        <dd>ZEPP · Room M210<br>Geschwister-Scholl-Platz 1<br>80539 München</dd>
+      </div>
+      <div>
+        <dt>Format</dt>
+        <dd>Pre-read workshop<br>Register by email</dd>
+      </div>
+    </dl>
+  </div>
+
+  <section id="about">
+    <div class="section-label">About</div>
+    <h2 class="section-title">A Munich–Oxford workshop on the <em>normative foundations</em> of AI ethics.</h2>
+    <div class="about-grid">
+      <div>
+        <p><em>Normative Ethics and Artificial Intelligence</em> is a one-day workshop bringing together philosophers from LMU Munich and the University of Oxford to examine the normative foundations of AI ethics.</p>
+        <p>It is the third edition of an annual Munich–Oxford collaboration, co-organised by the Munich Center for Machine Learning at LMU Munich and the Uehiro Oxford Institute.</p>
+      </div>
+      <div>
+        <p>The workshop follows a pre-read format. Each speaker circulates a draft paper to participants roughly two weeks in advance. During the session, the author gives a brief framing (5–10 minutes), a dedicated commentator delivers a critical response (10–15 minutes), and the remaining time is devoted to structured discussion.</p>
+        <p>The format privileges depth over breadth and turns the workshop into a genuine collaborative engagement with work-in-progress.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="speakers">
+    <div class="section-label">Speakers</div>
+    <h2 class="section-title">Four speakers, from Munich and Oxford.</h2>
+    <ol class="speakers-list">
+      <li>
+        <span class="speaker-num">01</span>
+        <div>
+          <span class="speaker-name">Sven Nyholm</span>
+          <span class="speaker-aff">LMU Munich</span>
+        </div>
+      </li>
+      <li>
+        <span class="speaker-num">02</span>
+        <div>
+          <span class="speaker-name">Jurgis Karpus</span>
+          <span class="speaker-aff">LMU Munich &amp; KU Eichstätt-Ingolstadt</span>
+        </div>
+      </li>
+      <li>
+        <span class="speaker-num">03</span>
+        <div>
+          <span class="speaker-name">Thomas Douglas</span>
+          <span class="speaker-aff">Uehiro Oxford Institute, University of Oxford</span>
+        </div>
+      </li>
+      <li>
+        <span class="speaker-num">04</span>
+        <div>
+          <span class="speaker-name">Beatrice Marchegiani</span>
+          <span class="speaker-aff">University of Oxford</span>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="organizers-registration">
+    <div class="row-2">
+      <div>
+        <div class="section-label">Organizers</div>
+        <div class="organizer">
+          <div class="organizer-name">Benjamin Lange</div>
+          <div class="organizer-aff">MCML &amp; LMU Munich</div>
+        </div>
+        <div class="organizer">
+          <div class="organizer-name">Johannes Reisinger</div>
+          <div class="organizer-aff">MCML &amp; LMU Munich</div>
+        </div>
+      </div>
+      <div>
+        <div class="section-label">Registration</div>
+        <p class="register-text">The workshop is open to interested colleagues and students. Places are limited. To register, or to request the pre-read papers, please write to the organizers.</p>
+        <a class="register-cta" href="mailto:benjamin.lange@lmu.de?subject=Normative%20Ethics%20and%20AI%20Workshop%20%E2%80%94%2016%20July%202026">benjamin.lange@lmu.de</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="section-label">Hosted &amp; supported by</div>
+    <!-- Partner logos: drop SVG/PNG files into ./assets/ with the names below, or update the src attributes. -->
+    <div class="partners">
+      <div class="partner">
+        <img src="assets/mcml-logo.jpg" alt="Munich Center for Machine Learning" onerror="this.style.display='none'">
+        <span class="partner-name">Munich Center for Machine Learning</span>
+      </div>
+      <div class="partner">
+        <img src="assets/lmu-logo.svg" alt="LMU Munich" onerror="this.style.display='none'">
+        <span class="partner-name">Ludwig-Maximilians-Universität München</span>
+      </div>
+      <div class="partner">
+        <img src="assets/oxford-logo.png" alt="University of Oxford" onerror="this.style.display='none'">
+        <span class="partner-name">University of Oxford</span>
+      </div>
+      <div class="partner">
+        <img src="assets/uehiro-logo.png" alt="Uehiro Oxford Institute" onerror="this.style.display='none'">
+        <span class="partner-name">Uehiro Oxford Institute</span>
+      </div>
+    </div>
+    <p class="acknowledgement">This workshop is supported by the Munich Center for Machine Learning (MCML) and co-organised with the Uehiro Oxford Institute, University of Oxford.</p>
+    <div class="colophon">
+      <span>© 2026 · Normative Ethics &amp; AI Workshop</span>
+      <span><a href="mailto:benjamin.lange@lmu.de">Contact organizers</a></span>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
